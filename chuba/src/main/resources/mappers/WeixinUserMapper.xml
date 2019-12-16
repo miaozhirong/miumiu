@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.miu.chuba.mapper.WeixinUserMapper">
+	<!-- 根据微信id来查询微信用户信息 -->
+	<!-- WeixinUser findByWxId(Integer wxId) -->
+	<select id="findByWxId"
+		resultType="com.miu.chuba.entity.WeixinUser">
+		SELECT
+			wx_id AS wxId,
+			wx_account AS wxAccount,
+			wx_name AS wxName,
+			platform,gender,
+			is_delete AS isDelete
+		FROM
+			wx_user
+		WHERE
+			wx_id=#{wxId}
+	</select>
+	<!-- 根据微信名字来查询微信用户信息 -->
+	<!-- WeixinUser findByWxName(String wxName) -->
+	<select id="findByWxName"
+		resultType="com.miu.chuba.entity.WeixinUser">
+		SELECT
+			wx_id AS wxId,
+			wx_account AS wxAccount,
+			wx_name AS wxName,
+			platform,gender,
+			is_delete AS isDelete
+		FROM
+			wx_user
+		WHERE
+			wx_name=#{wxName}
+	</select>
+
+	<!-- 根据微信账号来查询微信用户信息 -->
+	<!-- WeixinUser findByWxAccount(String wxAccount) -->
+	<select id="findByWxAccount"
+		resultType="com.miu.chuba.entity.WeixinUser">
+		SELECT
+			wx_id AS wxId,
+			wx_account AS wxAccount,
+			wx_name AS wxName,
+			platform,gender,
+			is_delete AS isDelete
+		FROM
+			wx_user
+		WHERE
+			wx_account=#{wxAccount}
+	</select>
+	<!-- 插入用户数据 -->
+	<!-- Integer insert(WeixinUser weixinUser) -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="wxId">
+		INSERT INTO wx_user (
+			wx_account,wx_name,
+			platform,gender,
+			is_delete,
+			created_user,created_time,
+			modified_user,modified_time
+		) VALUES (
+			#{wxAccount},#{wxName},
+			#{platform},#{gender},
+			#{isDelete},
+			#{createdUser},#{createdTime},
+			#{modifiedUser},#{modifiedTime}
+		)
+	</insert>
+	<!-- 更新微信个人资料 -->
+	<!-- Integer updateInfo(WeixinUser weixinUser)-->
+	<update id="updateInfo">
+		UPDATE
+			wx_user
+		SET
+			wx_account=#{wxAccount},
+			wx_name=#{wxName},
+			platform=#{platform},
+			gender=#{gender},
+			modified_user=#{modifiedUser},
+			modified_time=#{modifiedTime}
+		WHERE
+			wx_id=#{wxId}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+

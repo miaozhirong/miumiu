@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit" />
+<title>login</title>
+<link rel="stylesheet" type="text/css"
+	href="../js/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="../js/easyui/themes/icon.css">
+<script type="text/javascript" src="../js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="../js/easyui/jquery.easyui.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../js/css/login.css" />
+<script type="text/javascript" src="../js/js/autoLogin.js"></script>
+<script type="text/javascript" src="../js/js/jquery.cookie.js" charset="utf-8"></script>
+
+</head>
+<body>
+	<div class="login-div-a" >
+		<div  class="easyui-panel" title="Login" data-options="iconCls:'icon-filter'">
+			<form id="form-login" action="index.html" role="form">
+				<div class="login-div-b" >
+					<label for="username">Username:</label> 
+					<input id="username" name="username"class="easyui-validatebox" type="text" placeholder="请输入用户名" />
+				</div>
+				<div  class="login-div-b">
+					<label for="password">Password:</label> 
+					<input id="password" name="password" class="easyui-validatebox" type="password" placeholder="请输入密码"/>
+				</div>
+				<!-- 记住我-->	
+				<div class="login-checkbox" >
+					<label>
+						<input type="checkbox" id="loginBtn">自动登录
+					</label>
+				</div>
+				<!--提交按钮-->
+				<div class="login-form">
+					<div class="col-md-8">
+						<input id="btn-login" class="btn btn-primary" type="button" value="登录" />
+						<span class="pull-right"><small>还没有账号？</small><a href="register.jsp">注册</a></span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+		
+	<script type="text/javascript">
+	$("#btn-login").click(function(){
+		$.ajax({
+			"url":"/users/login",
+			"data":$("#form-login").serialize(),
+			"type":"post",
+			"dataType":"json",
+			"success":function(json) {
+				if (json.state == 200) {
+					alert("登陆成功");
+					$.cookie("username", json.data.username, {expire: 7});
+					$.cookie("avatar", json.data.avatar, {expire: 7});
+				} else {
+					alert(json.message);
+				}
+			}
+		});
+	});
+	</script>
+</body>
+</html>

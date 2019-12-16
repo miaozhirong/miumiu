@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.miu.chuba.mapper.ZhifubaoUserMapper">
+
+	<!-- 根据支付宝id来查询支付宝用户信息 -->
+	<!-- ZhifubaoUser findByZfbId(Integer zfbId) -->
+	<select id="findByZfbId"
+		resultType="com.miu.chuba.entity.ZhifubaoUser">
+		SELECT
+			zfb_id AS zfbId,
+			wx_id AS wxId,
+			zfb_account AS zfbAccount,
+			zfb_name AS zfbName,
+			is_delete AS isDelete
+		FROM
+			zhifubao
+		WHERE
+			zfb_id=#{zfbId}
+	</select>
+	<!-- 根据微信id来查询支付宝用户信息 -->
+	<!-- ZhifubaoUser findByWxId(Integer wxId) -->
+	<select id="findByWxId"
+		resultType="com.miu.chuba.entity.ZhifubaoUser">
+		SELECT
+			zfb_id AS zfbId,
+			wx_id AS wxId,
+			zfb_account AS zfbAccount,
+			zfb_name AS zfbName,
+			is_delete AS isDelete
+		FROM
+			zhifubao
+		WHERE
+			wx_id=#{wxId}
+	</select>
+
+	<!-- 插入用户数据 -->
+	<!-- Integer insert(ZhifubaoUser zhifubaoUser)-->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="zfbId">
+		INSERT INTO zhifubao (
+			wx_id,zfb_account,
+			zfb_name,is_delete,
+			created_user,created_time,
+			modified_user,modified_time
+		) VALUES (
+			#{wxId},#{zfbAccount},
+			#{zfbName},#{isDelete},
+			#{createdUser},#{createdTime},
+			#{modifiedUser},#{modifiedTime}
+		)
+	</insert>
+	<!-- 更新支付宝个人资料 -->
+	<!-- Integer updateInfo(ZhifubaoUser weiboUser)-->
+	<update id="updateInfo">
+		UPDATE
+			zhifubao
+		SET
+			wx_id=#{wxId},
+			zfb_account=#{zfbAccount},
+			zfb_name=#{zfbName},
+			modified_user=#{modifiedUser},
+			modified_time=#{modifiedTime}
+		WHERE
+			zfb_id=#{zfbId}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+

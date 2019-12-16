@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.miu.chuba.mapper.WeiboUserMapper">
+	<!-- 根据微博id来查询微博用户信息 -->
+	<!-- WeiboUser findByWbId(Integer wbId) -->
+	<select id="findByWbId"
+		resultType="com.miu.chuba.entity.WeiboUser">
+		SELECT
+			wb_id AS wbId,
+			wx_id AS wxId,
+			wb_name AS wbName,
+			wb_url AS wbUrl,
+			is_delete AS isDelete
+		FROM
+			weibo
+		WHERE
+			wb_id=#{wbId}
+	</select>
+	<!-- 根据微博名字来查询微博用户信息 -->
+	<!-- WeixinUser findByWbName(String wxName) -->
+	<select id="findByWbName"
+		resultType="com.miu.chuba.entity.WeiboUser">
+		SELECT
+			wb_id AS wbId,
+			wx_id AS wxId,
+			wb_name AS wbName,
+			wb_url AS wbUrl,
+			is_delete AS isDelete
+		FROM
+			weibo
+		WHERE
+			wb_name=#{wbName}
+	</select>
+
+	<!-- 插入用户数据 -->
+	<!-- Integer insert(WeiboUser weiboUser) -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="wbId">
+		INSERT INTO weibo (
+			wx_id,wb_name,
+			wb_url,is_delete,
+			created_user,created_time,
+			modified_user,modified_time
+		) VALUES (
+			#{wxId},#{wbName},
+			#{wbUrl},#{isDelete},
+			#{createdUser},#{createdTime},
+			#{modifiedUser},#{modifiedTime}
+		)
+	</insert>
+	<!-- 更新微博个人资料 -->
+	<!-- Integer updateInfo(WeiboUser weiboUser)-->
+	<update id="updateInfo">
+		UPDATE
+			weibo
+		SET
+			wx_id=#{wxId},
+			wb_name=#{wbName},
+			wb_url=#{wbUrl},
+			modified_user=#{modifiedUser},
+			modified_time=#{modifiedTime}
+		WHERE
+			wb_id=#{wbId}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
