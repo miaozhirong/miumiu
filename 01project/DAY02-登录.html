@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DAY02-登录</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>8. 用户-登录-持久层</h3>
+<p><strong>1. 规划SQL语句</strong></p>
+<p>登录涉及的SQL语句大致是：</p>
+<pre><code>SELECT 
+    uid,password,salt,is_delete,avatar,username
+FROM 
+    t_user 
+WHERE 
+    username=?
+</code></pre>
+
+<p>查询时，必须查询<code>uid</code>字段，因为当登录成功时，需要将<code>uid</code>存入Session；必须查询<code>password</code>字段，用于验证登录时密码是否正确；必须查询<code>salt</code>字段，用于将用户提交的原始密码进行加密，保证密码可以用于后续的登录验证；必须查询<code>is_delete</code>字段，如果该字段值表示“已删除”则应该拒绝登录；必须查询<code>avatar</code>字段，当登录成功时将其存储下来，后续需要显示头像时就可以直接显示，而不必再查数据库；还应该查询<code>username</code>字段，因为当用户注册时，假设使用的用户名是<code>ROOT</code>，则存储下来的就是<code>ROOT</code>，如果要查询，查询出来的也是<code>ROOT</code>，但是，该用户通过<code>root</code>、<code>Root</code>、<code>rOOt</code>都可以登录成功，如果使用登录时输入的用户名显示在界面上，就会导致显示不统一。</p>
+<p><strong>2. 接口与抽象方法</strong></p>
+<p>在开发“注册”功能时，已经完成“根据用户名查询用户数据”的功能，则直接使用该抽象方法<code>User findByUsername(String username)</code>即可，无须再次添加！</p>
+<p><strong>3. 配置XML映射</strong></p>
+<p>在开发“注册”功能时，已经完成映射的SQL语句，但是，查询的字段列表并不能满足此次“登录”的需求，则应该在原映射SQL语句的基础之上，添加查询更多的字段：</p>
+<pre><code>&lt;!-- 根据用户名查询用户数据 --&gt;
+&lt;!-- User findByUsername(String username) --&gt;
+&lt;select id=&quot;findByUsername&quot;
+    resultType=&quot;cn.tedu.store.entity.User&quot;&gt;
+    SELECT
+        uid,
+        password,salt,
+        avatar,username,
+        is_delete AS isDelete
+    FROM
+        t_user
+    WHERE
+        username=#{username}
+&lt;/select&gt;
+</code></pre>
+
+<p>关于单元测试，也不用重新开发，直接使用此前的单元测试即可，如果能找到匹配用户名的用户数据，则查询结果中应该包含更多的信息！</p>
+<h3>9. 用户-登录-业务层</h3>
+<p><strong>1. 规划异常</strong></p>
+<p>当用户登录时，如果输入的用户名不存在，则不允许登录，应该抛出<code>UserNotFoundException</code>；</p>
+<p>当用户登录时，如果输入的密码错误，则不允许登录，应该抛出<code>PasswordNotMatchException</code>；</p>
+<p>当用户登录时，如果<code>is_delete</code>被标记为1，表示“已删除”，则不允许登录，应该抛出<code>UserNotFoundException</code>；</p>
+<p>则应该创建以上2个异常类，它们都应该继承自<code>ServiceException</code>，并添加来自父类的构造方法。</p>
+<p><strong>2. 接口与抽象方法</strong></p>
+<p>在<code>IUserService</code>接口中添加“登录”的抽象方法：</p>
+<pre><code>User login(String username, String password) throws UserNotFoundException, PasswordNotMatchException;
+</code></pre>
+
+<p><strong>3. 实现抽象方法</strong></p>
+<p>在<code>UserServiceImpl</code>实现类中实现抽象方法：</p>
+<pre><code>@Override
+public User login(String username, String password) throws UserNotFoundException, PasswordNotMatchException {
+    // 根据参数username查询匹配的用户信息
+    User result = userMapper.findByUsername(username);
+
+    // 判断查询结果是否为null
+    if (result == null) {
+        // 是：用户名对应的数据不存在，抛出UserNotFoundException
+        throw new UserNotFoundException(
+            &quot;登录失败，用户名不存在！&quot;);
+    }
+
+    // 判断isDelete值是否为1
+    if (result.getIsDelete() == 1) {
+        // 是：用户标记为“已删除”，抛出UserNotFoundException
+        throw new UserNotFoundException(
+            &quot;登录失败，用户名不存在！&quot;);
+    }
+
+    // 基于盐值和参数password执行加密
+    String salt = result.getSalt();
+    String md5Password = getMd5Password(password, salt);
+
+    // 判断加密后的密码与查询结果中的密码是否不匹配
+    if (!result.getPassword().equals(md5Password)) {
+        // 是：密码不匹配，抛出PasswordNotMatchException
+        throw new PasswordNotMatchException(
+            &quot;登录失败！密码错误！&quot;);
+    }
+
+    // 将查询结果中的salt, password, isDelete设置为null
+    result.setSalt(null);
+    result.setPassword(null);
+    result.setIsDelete(null);
+    // 返回查询结果
+    return result;
+}
+</code></pre>
+
+<p>完成后，在<code>UserServiceTestCase</code>中编写并执行单元测试：</p>
+<pre><code>@Test
+public void login() {
+    try {
+        String username = &quot;digest&quot;;
+        String password = &quot;8888&quot;;
+        User result = service.login(username, password);
+        System.err.println(result);
+    } catch (ServiceException e) {
+        System.err.println(e.getClass().getName());
+        System.err.println(e.getMessage());
+    }
+}
+</code></pre>
+
+<h3>10. 用户-登录-控制器层</h3>
+<p><strong>1. 处理异常</strong></p>
+<p>此次抛出了2个新的异常，则应该在<code>BaseController</code>中处理异常的方法中添加2个<code>else if</code>进行处理。</p>
+<p><strong>2. 设计请求</strong></p>
+<pre><code>请求路径：/users/login
+请求参数：String username, String password, HttpSession session
+请求类型：POST
+响应数据：ResponseResult&lt;User&gt;
+</code></pre>
+
+<p><strong>3. 处理请求</strong></p>
+<p>在<code>UserController</code>类中添加处理请求的方法：</p>
+<pre><code>@RequestMapping(&quot;login&quot;)
+public ResponseResult&lt;User&gt; login(String username, String password, HttpSession session) {
+    //调用业务层对象的login()方法执行登录
+    User result=userService.login(username, password);
+    //将登录结果中的uid封装到session中
+    session.setAttribute(&quot;uid&quot;, result.getUid());
+    //将登录结果中的username封装到session中
+    session.setAttribute(&quot;username&quot;, result.getUsername());
+    //返回结果
+    return new ResponseResult&lt;&gt;(SUCCESS,result);
+}
+</code></pre>
+
+<p>完成后，通过<code>http://localhost:8080/users/login?username=digest&amp;password=8888</code>执行测试，测试完成后，将处理请求的方法的注解改为<code>@PostMapping</code>。</p>
+<h3>11. 用户-登录-前端页面</h3>
+<p>参考“注册”完成“登录”的页面功能。</p>
+<p>注意：在<code>login.html</code>中，原有代码中登录按钮是<code>type=&quot;submit&quot;</code>的，需要改为<code>type=&quot;button&quot;</code>。</p>
+<p>至此，注册和登录功能已经完成！但是，数据表中有许多错误数据，例如某些字段没有值，或密码没有加密。应该：</p>
+<ol>
+<li>
+<p>删除用户表中所有数据；</p>
+</li>
+<li>
+<p>注册名为<code>root</code>且密码是<code>1234</code>的用户数据；</p>
+</li>
+<li>
+<p>自行创建2个或更多其他用户数据，用于后续的“修改密码”功能的测试。</p>
+<pre><code>// 通过选择器，选择到id（因为通过#表示的）选择到btn-login的标签，并为其绑定单击事件
+$(&quot;#btn-login&quot;).click(function() {
+    $.ajax({
+        &quot;url&quot; : &quot;/users/login&quot;,
+        &quot;data&quot; : $(&quot;#form-login&quot;).serialize(),
+        &quot;type&quot; : &quot;post&quot;,
+        &quot;dataType&quot; : &quot;json&quot;,
+        &quot;success&quot; : function(json) {
+            if (json.state == 200) {
+                alert(&quot;登录成功！&quot;);
+                //将用户名和头像保存到cookie中
+                $.cookie(&quot;username&quot;, json.data.username, {expire: 7});
+                $.cookie(&quot;avatar&quot;, json.data.avatar, {expire: 7});
+            } else {
+                alert(json.message);
+            }
+        }
+    });
+});
+</code></pre>
+
+</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

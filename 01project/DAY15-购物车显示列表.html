@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DAY15-购物车显示列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>58. 购物车-显示列表-持久层</h3>
+<p><strong>1. 规划SQL语句</strong></p>
+<p>要显示某用户的购物车数据列表，需要执行的SQL语句大致是：</p>
+<pre><code>select xx from t_cart where uid=?
+</code></pre>
+
+<p>但是，在<code>t_cart</code>表中存储的都是关联数据的id，例如商品数据的<code>gid</code>，即便查询到了<code>gid</code>也不可能直接用于显示界面，还应该根据<code>gid</code>查询出商品的标题、图片、单价等，为了保证查询出的结果能被直接显示到界面中，查询语句应该是：</p>
+<pre><code>select cid,gid,title,image,price,t_cart.num 
+from t_cart 
+inner join t_goods 
+on t_cart.gid=t_goods.id 
+where uid=?
+order by t_cart.created_time desc
+</code></pre>
+
+<p><strong>2. 接口与抽象方法</strong></p>
+<p>在设计抽象方法之前，需要新创建<code>cn.tedu.store.vo.CartVO</code>VO类，以用于封装查询结果：</p>
+<pre><code>public class CartVO implements Serializable {
+    private Integer cid;
+    private Long gid;
+    private String title;
+    private String image;
+    private Long price;
+    private Integer num;
+    // GET/SET
+}
+</code></pre>
+
+<p>然后，在<code>CartMapper.java</code>接口中添加抽象方法：</p>
+<pre><code>List&lt;CartVO&gt; findByUid(Integer uid);
+</code></pre>
+
+<p><strong>3. 配置映射</strong></p>
+<p>在<code>CartMapper.xml</code>中配置：</p>
+<pre><code>&lt;!-- 获取某用户的购物车数据列表 --&gt;
+&lt;!-- List&lt;CartVO&gt; findByUid(Integer uid) --&gt;
+&lt;select id=&quot;findByUid&quot;
+    resultType=&quot;cn.tedu.store.vo.CartVO&quot;&gt;
+    SELECT
+        cid, gid,
+        title, image,
+        price, t_cart.num
+    FROM
+        t_cart
+    INNER JOIN
+        t_goods
+    ON
+        t_cart.gid=t_goods.id
+    WHERE
+        uid=#{uid}
+    ORDER BY
+        t_cart.created_time DESC
+&lt;/select&gt;
+</code></pre>
+
+<p>然后编写并执行单元测试：</p>
+<pre><code>@Test
+public void findByUid() {
+    Integer uid = 11;
+    List&lt;CartVO&gt; list = mapper.findByUid(uid);
+    System.err.println(&quot;BEGIN:&quot;);
+    for (CartVO item : list) {
+        System.err.println(item);
+    }
+    System.err.println(&quot;END.&quot;);
+}
+</code></pre>
+
+<h3>59. 购物车-显示列表-业务层</h3>
+<p><strong>1. 规划异常</strong></p>
+<p>无</p>
+<p><strong>2. 接口与抽象方法</strong></p>
+<p>在<code>ICartService</code>中添加抽象方法：</p>
+<pre><code>/**
+ * 获取某用户的购物车数据列表
+ * @param uid 用户的id
+ * @return 匹配的购物车数据列表
+ */
+List&lt;CartVO&gt; getByUid(Integer uid);
+</code></pre>
+
+<p><strong>3. 实现</strong></p>
+<p>首先，在<code>CartServiceImpl</code>实现类中再次粘贴持久层中的方法，并将其私有化实现：</p>
+<p>然后，重写接口中的抽象方法，调用自身的私有方法实现：</p>
+<p>最后，在<code>CartServiceTestCase</code>中编写并执行单元测试：</p>
+<h3>60. 购物车-显示列表-控制器层</h3>
+<p><strong>1. 处理异常</strong></p>
+<p>无</p>
+<p><strong>2. 设计请求</strong></p>
+<pre><code>请求路径：/carts/
+请求参数：HttpSession session
+请求类型：GET
+响应结果：ResponseResult&lt;List&lt;CartVO&gt;&gt;
+是否拦截：是，无需修改配置
+</code></pre>
+
+<p><strong>3. 处理请求</strong></p>
+<p>在<code>CartController</code>中添加处理请求的方法：</p>
+<pre><code>@GetMapping(&quot;/&quot;)
+public ResponseResult&lt;List&lt;CartVO&gt;&gt; getByUid(HttpSession session) {
+    // 获取uid
+    Integer uid=getUidFromSession(session);
+    // 执行查询
+    List&lt;CartVO&gt;data=cartService.getByUid(uid);
+    // 响应成功与查询结果
+    return new ResponseResult&lt;&gt;(SUCCESS,data);
+}
+</code></pre>
+
+<p>完成后，打开浏览器，通过<code>http://localhost:8080/carts/</code>执行测试，测试之前应该先登录。</p>
+<h3>60. 购物车-显示列表-前端页面</h3>
+<pre><code>        $(document).ready(function() {
+            showCartList();
+
+        });
+        function showCartList(){
+            $(&quot;#cart-list&quot;).empty();
+            $.ajax({
+                &quot;url&quot; : &quot;/carts/&quot;,
+                &quot;type&quot; : &quot;GET&quot;,
+                &quot;dataType&quot; : &quot;json&quot;,
+                &quot;success&quot; : function(json) {
+                    if (json.state == 200) {
+                        var list=json.data;
+                        for(var i=0;i&lt;list.length;i++){
+                            console.log(list[i].title);
+                            var html='&lt;tr&gt;&lt;td&gt;&lt;input name=&quot;cids&quot; value=&quot;#{cid}&quot; type=&quot;checkbox&quot; class=&quot;ckitem&quot; /&gt;&lt;/td&gt;'
+                                +'&lt;td&gt;&lt;img src=&quot;..#{goods-image}collect.png&quot; class=&quot;img-responsive&quot; /&gt;&lt;/td&gt;'
+                                +'&lt;td&gt;#{goods-title}&lt;/td&gt;'
+                                +'&lt;td&gt;¥&lt;span id=&quot;goods-price-#{cid}&quot;&gt;#{goods-price}&lt;/span&gt;.00&lt;/td&gt;'
+                                +'&lt;td&gt;'
+                                +'&lt;input type=&quot;button&quot; value=&quot;-&quot; class=&quot;num-btn&quot; onclick=&quot;reduceNum(1)&quot; /&gt;'
+                                +'&lt;input id=&quot;goods-num-#{cid}&quot; type=&quot;text&quot; size=&quot;2&quot; readonly=&quot;readonly&quot; class=&quot;num-text&quot; value=&quot;#{goods-num}&quot;&gt;'
+                                +'&lt;input class=&quot;num-btn&quot; type=&quot;button&quot; value=&quot;+&quot; onclick=&quot;addNum(#{cid})&quot; /&gt;'
+                                +'&lt;/td&gt;'
+                                +'&lt;td&gt;¥&lt;span id=&quot;goods-total-price-#{cid}&quot;&gt;#{total-price}&lt;/span&gt;.00&lt;/td&gt;'
+                                +'&lt;td&gt;'
+                                +'&lt;input type=&quot;button&quot; onclick=&quot;delCartItem(this)&quot; class=&quot;cart-del btn btn-default btn-xs&quot; value=&quot;删除&quot; /&gt;'
+                                +'&lt;/td&gt;&lt;/tr&gt;';
+
+                            html=html.replace(/#{cid}/g,list[i].cid);   
+                            html=html.replace(/#{goods-image}/g,list[i].image);
+                            html=html.replace(/#{goods-title}/g,list[i].title);
+                            html=html.replace(/#{goods-price}/g,list[i].price);
+                            html=html.replace(/#{goods-num}/g,list[i].num);
+                            html=html.replace(/#{total-price}/g,list[i].num*list[i].price);
+
+                            $(&quot;#cart-list&quot;).append(html);
+                        }
+                    } else {
+                        alert(json.message);
+                    }
+                },
+                &quot;error&quot;:function(){
+                    alert(&quot;您的登录信息已过期，请重新登录！&quot;);
+                    location.href=&quot;/web/login.html&quot;;
+                }
+            });
+        }
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DAY05-用户修改资料</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>16. 用户-修改资料-持久层</h3>
+<p><strong>1. 规划SQL语句</strong></p>
+<p>修改用户资料将使用的SQL语句大致是：</p>
+<pre><code>UPDATE 
+    t_user 
+SET 
+    phone=?,email=?,
+    gender=?,modified_user=?,
+    modified_time=? 
+WHERE 
+    uid=?
+</code></pre>
+
+<p>执行修改之前还是应该检查用户数据是否存在、是否被标记为删除，相关功能已经完成，无需再次开发。</p>
+<p>在界面的处理方面，在用户点击“修改资料”之前，页面上应该已经显示当前的用户数据，即：需要查询出当前用户的相关数据：</p>
+<pre><code>SELECT username,phone,email,gender FROM t_user WHERE uid=?
+</code></pre>
+
+<p>此前已经开发了<code>findByUid()</code>方法，则只需要补充查询的字段列表即可！</p>
+<p><strong>2. 接口与抽象方法</strong></p>
+<p>在<code>UserMapper.java</code>接口中添加抽象方法：</p>
+<pre><code>Integer updateInfo(User user);
+</code></pre>
+
+<p><strong>3. 配置XML映射</strong></p>
+<p>先配置映射：</p>
+<pre><code>&lt;!-- 更新用户个人资料 --&gt;
+&lt;!-- Integer updateInfo(User user) --&gt;
+&lt;update id=&quot;updateInfo&quot;&gt;
+    UPDATE
+        t_user
+    SET
+        phone=#{phone},
+        email=#{email},
+        gender=#{gender},
+        modified_user=#{modifiedUser},
+        modified_time=#{modifiedTime}
+    WHERE
+        uid=#{uid}
+&lt;/update&gt;
+</code></pre>
+
+<p>单元测试：</p>
+<pre><code>@Test
+public void updateInfo() {
+    User user = new User();
+    user.setUid(14);
+    user.setPhone(&quot;13800138014&quot;);
+    user.setEmail(&quot;spring@tedu.cn&quot;);
+    user.setGender(1);
+    user.setModifiedUser(&quot;ROOT&quot;);
+    user.setModifiedTime(new Date());
+    Integer rows = mapper.updateInfo(user);
+    System.err.println(&quot;rows=&quot; + rows);
+}
+</code></pre>
+
+<h3>17. 用户-修改资料-业务层</h3>
+<p><strong>1. 规划异常</strong></p>
+<p>此次是对用户数据进行操作，应该先检查用户数据，则可能抛出<code>UserNotFoundException</code>。</p>
+<p>此次执行是更新操作，则可能抛出<code>UpdateException</code>。</p>
+<p>此次没有新的异常。</p>
+<p><strong>2. 接口与抽象方法</strong></p>
+<p>在<code>IUserService</code>接口中添加“修改资料”的抽象方法：</p>
+<pre><code>void changeInfo(User user) throws UserNotFoundException, UpdateException;
+</code></pre>
+
+<p><strong>3. 实现抽象方法</strong></p>
+<p>在<code>UserServiceImpl.java</code>中实现以上抽象方法：</p>
+<pre><code>@Override
+public void changeInfo(User user) throws UserNotFoundException, UpdateException {
+    // 从参数user中获取uid
+    Integer uid = user.getUid();
+    // 调用持久层对象的方法，根据uid查询用户数据
+    User result = userMapper.findByUid(uid);
+
+    // 判断查询结果是否为null
+    if (result == null) {
+        // 是：抛出UserNotFoundException
+        throw new UserNotFoundException(
+            &quot;修改个人资料错误！尝试访问的用户数据不存在！&quot;);
+    }
+
+    // 判断查询结果中的isDelete是否为1
+    if (result.getIsDelete() == 1) {
+        // 是：抛出UserNotFoundException
+        throw new UserNotFoundException(
+            &quot;修改个人资料错误！尝试访问的用户数据不存在！&quot;);
+    }
+
+    // 创建当前时间对象，封装到user中
+    user.setModifiedTime(new Date());
+    // TODO 确保modifiedUser属性是有值的
+
+    // 调用持久层对象执行修改，并获取返回值（即受影响的行数）
+    Integer rows = userMapper.updateInfo(user);
+    // 判断返回值是否不为1
+    if (rows != 1) {
+        // 是：抛出UpdateException
+        throw new UpdateException(
+            &quot;修改个人资料错误！更新数据时发生未知错误！&quot;);
+    }
+}
+</code></pre>
+
+<p>完成后，编写并执行单元测试：</p>
+<pre><code>@Test
+public void changeInfo() {
+    try {
+        User user = new User();
+        user.setUid(11);
+        user.setModifiedUser(&quot;超级管理员&quot;);
+        user.setPhone(&quot;13800138011&quot;);
+        user.setEmail(&quot;root@tedu.cn&quot;);
+        user.setGender(1);
+        service.changeInfo(user);
+        System.err.println(&quot;OK.&quot;);
+    } catch (ServiceException e) {
+        System.err.println(e.getClass());
+        System.err.println(e.getMessage());
+    }
+}
+</code></pre>
+
+<h3>18. 用户-修改资料-控制器层</h3>
+<p><strong>1. 处理异常</strong></p>
+<p>此次业务层没有抛出新的异常，抛出的都是已经在<code>BaseController</code>中处理过的类型的异常，所以，无需处理。</p>
+<p><strong>2. 设计请求</strong></p>
+<pre><code>请求路径：/users/change_info
+请求参数：User user, HttpSession session
+请求类型：POST
+响应数据：ResponseResult&lt;Void&gt;
+</code></pre>
+
+<p><strong>3. 处理请求</strong></p>
+<p>在<code>UserController</code>中处理请求：</p>
+<pre><code>@RequestMapping(&quot;change_info&quot;)
+public ResponseResult&lt;Void&gt; changeInfo(
+    User user, HttpSession session) {
+    // 获取uid
+    Integer uid = getUidFromSession(session);
+    // 获取用户名
+    String username = session.getAttribute(&quot;username&quot;).toString();
+    // 将uid和用户名封装到参数user对象中
+    user.setUid(uid);
+    user.setModifiedUser(username);
+    // 调用业务层对象执行修改个人资料
+    userService.changeInfo(user);
+    // 返回操作成功
+    return new ResponseResult&lt;&gt;(SUCCESS);
+}
+</code></pre>
+
+<p>完成后，在浏览器中通过<code>http://localhost:8080/users/change_info?phone=13900139011&amp;email=root@qq.com&amp;gender=0</code>执行测试。</p>
+<h3>19. 用户-修改资料-前端页面</h3>
+<p>与此前的页面不同，此次前端页面需要完成的功能有2项：</p>
+<ol>
+<li>
+<p>当页面打开时，就显示当前登录的用户的信息；</p>
+</li>
+<li>
+<p>当点击“修改”按钮时，提交修改。</p>
+</li>
+</ol>
+<p>首先，完成第1项任务，应该是：当页面打开时，客户端（浏览器）就直接向服务器发出请求，请求获取当前登录的用户的信息，当服务器返回用户信息后，将这些数据显示在网页中。</p>
+<p>目前，服务器端并不能响应客户端“请求获取当前登录的用户的信息”这样的需求，所以，需要在控制器中添加对这种请求的处理，但是，控制器中的功能都是通过业务层对象来实现的，而业务层中也没有这样功能，同理，业务层的功能是基于持久层实现的，而持久层已经有<code>findByUid()</code>方法可以实现，则持久层无需再开发。</p>
+<p>所以，现在的任务应该是：</p>
+<p><strong>开发“获取用户数据”的业务层</strong></p>
+<p>应该先在业务层接口<code>IUserService</code>中添加新的抽象方法：</p>
+<pre><code>User getByUid(Integer uid) throws UserNotFoundException;
+</code></pre>
+
+<p>然后在业务层实现类<code>UserServiceImpl</code>中实现以上方法：</p>
+<pre><code>@Override
+public User getByUid(Integer uid) throws UserNotFoundException {
+    // 根据参数uid查询用户数据
+    User result = userMapper.findByUid(uid);
+
+    // 判断查询结果是否为null
+    if (result == null) {
+        // 是：抛出UserNotFoundException
+        throw new UserNotFoundException(
+            &quot;获取用户信息失败！尝试访问的用户数据不存在！&quot;);
+    }
+
+    // 判断查询结果中的isDelete是否为1
+    if (result.getIsDelete() == 1) {
+        // 是：抛出UserNotFoundException
+        throw new UserNotFoundException(
+            &quot;获取用户信息失败！尝试访问的用户数据不存在！&quot;);
+    }
+
+    // 将查询结果中的password/salt/isDelete设置为null
+    result.setPassword(null);
+    result.setSalt(null);
+    result.setIsDelete(null);
+
+    // 返回查询结果
+    return result;
+}
+</code></pre>
+
+<p>完成后，编写并执行单元测试：</p>
+<pre><code>@Test
+public void getByUid() {
+    try {
+        Integer uid = 11;
+        User user = service.getByUid(uid);
+        System.err.println(user);
+    } catch (ServiceException e) {
+        System.err.println(e.getClass());
+        System.err.println(e.getMessage());
+    }
+}
+</code></pre>
+
+<p><strong>开发“获取用户数据”的控制器层</strong></p>
+<p>设计请求：</p>
+<pre><code>请求路径：/users/details
+请求参数：HttpSession session
+请求类型：GET
+响应数据：ResponseResult&lt;User&gt;
+</code></pre>
+
+<p>处理请求：</p>
+<pre><code>@GetMapping(&quot;details&quot;)
+public ResponseResult&lt;User&gt; getByUid(
+        HttpSession session) {
+    // 获取uid
+    Integer uid = getUidFromSession(session);
+    // 调用业务层对象执行获取数据
+    User data = userService.getByUid(uid);
+    // 返回操作成功及数据
+    return new ResponseResult&lt;&gt;(SUCCESS, data);
+}
+</code></pre>
+
+<p>打开浏览器，先登录，然后通过<code>http://localhost:8080/users/details</code>测试。</p>
+<p><strong>在前端页面中，打开时即请求当前登录的用户数据，并显示</strong></p>
+<pre><code>    $(document).ready(function() {
+        $.ajax({
+            &quot;url&quot; : &quot;/users/details&quot;,
+            &quot;type&quot; : &quot;get&quot;,
+            &quot;dataType&quot; : &quot;json&quot;,
+            &quot;success&quot; : function(json) {
+                if (json.state == 200) {
+                    console.log(&quot;username=&quot;+json.data.username);
+                    console.log(&quot;phone=&quot;+json.data.phone);
+                    console.log(&quot;email=&quot;+json.data.email);
+                    console.log(&quot;gender=&quot;+json.data.gender);
+
+                    $(&quot;#input-username&quot;).val(json.data.username);
+                    $(&quot;#input-phone&quot;).val(json.data.phone);
+                    $(&quot;#input-email&quot;).val(json.data.email);
+                    if(json.data.gender==1){
+                        $(&quot;#gender-male&quot;).attr(&quot;checked&quot;,&quot;checked&quot;);
+                    }else{
+                        $(&quot;#gender-female&quot;).attr(&quot;checked&quot;,&quot;checked&quot;);
+                    }
+                } else {
+                    alert(json.message);
+                }
+            }
+        });
+    });
+</code></pre>
+
+<p><strong>在前端页面中，当点击“修改”按钮时执行修改个人资料</strong></p>
+<pre><code>    $(&quot;#btn-change-info&quot;).click(function() {
+        $.ajax({
+            &quot;url&quot; : &quot;/users/change_info&quot;,
+            &quot;data&quot; : $(&quot;#form-change-info&quot;).serialize(),
+            &quot;type&quot; : &quot;post&quot;,
+            &quot;dataType&quot; : &quot;json&quot;,
+            &quot;success&quot; : function(json) {
+                if (json.state == 200) {
+                    alert(&quot;个人资料修改成功！&quot;);
+                } else {
+                    alert(json.message);
+                }
+            },
+            &quot;error&quot;:function(){
+                alert(&quot;您的登录信息已过期，请重新登录！&quot;);
+                location.href=&quot;/web/login.html&quot;;
+            }
+        });
+    });
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

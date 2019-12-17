@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DAY13-商品详情显示</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>48. 显示商品详情-持久层</h3>
+<p><strong>1. 规划SQL语句</strong></p>
+<p>查询商品详情的SQL语句大致是：</p>
+<pre><code>SELECT title,sell_point,image,price FROM t_goods WHERE id=?
+</code></pre>
+
+<p><strong>2. 接口与抽象方法</strong></p>
+<p>在接口中声明抽象方法：</p>
+<pre><code>Goods findById(Long id);
+</code></pre>
+
+<p><strong>3. 配置映射</strong></p>
+<p>在<code>GoodsMapper.xml</code>中配置以上抽象方法的映射：</p>
+<pre><code>&lt;!-- 根据商品id查询商品详情 --&gt;
+&lt;!-- Goods findById(Long id) --&gt;
+&lt;select id=&quot;findById&quot;
+    resultType=&quot;cn.tedu.store.entity.Goods&quot;&gt;
+    SELECT 
+        title,
+        price,image,
+        sell_point AS sellPoint
+    FROM 
+        t_goods 
+    WHERE 
+        id=#{id} 
+&lt;/select&gt;
+</code></pre>
+
+<p>在<code>GoodsMapperTestCase</code>中编写并执行单元测试：</p>
+<pre><code>@Test
+public void findById() {
+    Long id = 10000017L;
+    Goods data = mapper.findById(id);
+    System.err.println(data);
+}
+</code></pre>
+
+<h3>49. 显示商品详情-业务层</h3>
+<p><strong>1. 规划异常</strong></p>
+<p>无</p>
+<p><strong>2. 接口与抽象方法</strong></p>
+<p>在<code>IGoodsService</code>接口中，将<code>GoodsMapper</code>中的方法复制粘贴过来，并将方法名中的<code>find</code>改成<code>get</code>：</p>
+<pre><code>/**
+ * 根据商品id查询商品详情
+ * @param id 商品id
+ * @return 匹配的商品详情，如果没有匹配的数据，则返回null
+ */
+Goods getById(Long id);
+</code></pre>
+
+<p><strong>3. 实现</strong></p>
+<p>在<code>GoodsServiceImpl</code>实现类中，将<code>GoodsMapper</code>中的方法复制粘贴过来，添加<code>private</code>权限，并调用持久层对象实现该方法：</p>
+<pre><code>/**
+ * 根据商品id查询商品详情
+ * @param id 商品id
+ * @return 匹配的商品详情，如果没有匹配的数据，则返回null
+ */
+private Goods findById(Long id) {
+    return goodsMapper.findById(id);
+}
+</code></pre>
+
+<p>在<code>GoodsServiceImpl</code>实现类中，重写<code>IGoodsService</code>接口中定义的抽象方法，并调用自身的私有方法实现：</p>
+<pre><code>@Override
+public Goods getById(Long id) {
+    return findById(id);
+}
+</code></pre>
+
+<p>完成后，在<code>GoodsServiceTestCase</code>中编写并执行单元测试：</p>
+<pre><code>@Test
+public void findById() {
+    Long id = 10000017L;
+    Goods data = service.getById(id);
+    System.err.println(data);
+}
+</code></pre>
+
+<h3>50. 显示商品详情-控制器层</h3>
+<p><strong>1. 处理异常</strong></p>
+<p>无</p>
+<p><strong>2. 设计请求</strong></p>
+<pre><code>请求路径：/goods/{id}/details
+请求参数：无
+请求类型：GET
+响应数据：ResponseResult&lt;Goods&gt;
+是否拦截：否，需要在白名单中检查 /goods/**
+</code></pre>
+
+<p><strong>3. 处理请求</strong></p>
+<pre><code>@GetMapping(&quot;{id}/details&quot;)
+public ResponseResult&lt;Goods&gt; getById(
+    @PathVariable(&quot;id&quot;) Long id) {
+    // 调用业务层对象执行查询
+    Goods data = goodsService.getById(id);
+    // 响应“成功”和查询结果
+    return new ResponseResult&lt;&gt;(SUCCESS, data);
+}
+</code></pre>
+
+<p>完成后，打开浏览器，不登录，直接通过<code>http://localhost:8080/goods/10000017/details</code>进行测试。</p>
+<h3>51. 显示商品详情-前端界面</h3>
+<p>首先，应该保证<code>product.html</code>是可以被不登录的情况下直接访问的，也就是需要将<code>/web/product.html</code>添加到拦截器的白名单中！</p>
+<p>然后，确保在主页中点击热销排行中的链接时，URL中包含<code>id=xxx</code>。则需要先从FTP下载<code>jquery-getUrlParam.zip</code>文件，解压得到<code>jquery-getUrlParam.js</code>文件，将该文件复制粘贴到项目的<code>static</code>下的<code>js</code>文件夹中，并打开<code>product.html</code>页面，添加引用该文件的代码：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jqueryQgetUrlParam.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>当添加了引用js文件后，可以检查该函数是否可以正确的获取到值：</p>
+<pre><code>    $(document).ready(function(){
+            var id=$.getUrlParam(&quot;id&quot;);
+            console.log(&quot;id=&quot;+id);
+            $(&quot;#gid&quot;).val(id);
+            showGoodsDetails(id)
+        });
+
+        function showGoodsDetails(id){
+            $.ajax({
+                &quot;url&quot; : &quot;/goods/&quot;+id+&quot;/details&quot;,
+                &quot;type&quot; : &quot;GET&quot;,
+                &quot;dataType&quot; : &quot;json&quot;,
+                &quot;success&quot; : function(json) {
+                    if (json.state == 200) {
+                        $(&quot;#goods-title&quot;).html(json.data.title);
+                        $(&quot;#goods-sell-point&quot;).html(json.data.sellPoint);
+                        $(&quot;#goods-price&quot;).html(json.data.price);
+                        for (var i = 1; i &lt;= 5; i++) {
+                            $(&quot;#goods-image-&quot; + i + &quot;-big&quot;).attr(&quot;src&quot;, &quot;..&quot; + json.data.image + i + &quot;_big.png&quot;);
+                            $(&quot;#goods-image-&quot; + i).attr(&quot;src&quot;, &quot;..&quot; + json.data.image + i + &quot;.jpg&quot;);
+                        }
+                    } else {
+                        alert(json.message);
+                    }
+                }
+            });
+        }
+</code></pre>
+
+<p>分开两个script</p>
+<pre><code>    $(&quot;#btn-add-to-cart&quot;).click(function() {
+        $.ajax({
+            &quot;url&quot; : &quot;/carts/add_to_cart&quot;,
+            &quot;data&quot; : $(&quot;#form-add-to-cart&quot;).serialize(),
+            &quot;type&quot; : &quot;post&quot;,
+            &quot;dataType&quot; : &quot;json&quot;,
+            &quot;success&quot; : function(json) {
+                if (json.state == 200) {
+                    alert(&quot;添加成功！&quot;);
+                } else {
+                    alert(json.message);
+                }
+            },
+            &quot;error&quot;:function(){
+                alert(&quot;您还没有登录或登录信息已过期，请登录后再执行操作！&quot;);
+                location.href=&quot;/web/login.html&quot;;
+            }
+        });
+    });
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

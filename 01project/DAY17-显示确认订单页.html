@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DAY17-显示确认订单页</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>显示确认订单页-持久层</h3>
+<p><strong>1. 规划SQL语句</strong></p>
+<p>在“显示确认订单页”，需要显示当前登录的用户的收货地址列表，还需要显示所勾选的购物车数据列表。</p>
+<p>在<code>AddressMapper</code>中已经完成显示当前登录的用户的收货地址列表的功能。</p>
+<p>目前，尚未开发“显示所勾选的购物车数据列表”功能，则需要添加，该功能对应的SQL语句大致是：</p>
+<pre><code>select cid,gid,title,image,price,t_cart.num 
+from t_cart 
+inner join t_goods 
+on t_cart.gid=t_goods.id 
+where cid in (?,?,?)
+order by t_cart.created_time desc
+</code></pre>
+
+<p>即：相对于此前已经完成的“显示当前用户的购物车数据列表”，此次只是查询时的WHERE子句不同，改为<code>where cid in (?,?,?)</code>。</p>
+<p><strong>2. 接口与抽象方法</strong></p>
+<p>由于以上功能应该是处理购物车数据的相关功能，所以，在<code>CartMapper.java</code>接口中添加抽象方法：</p>
+<pre><code>List&lt;CartVO&gt; findByCids(Integer[] cids);
+</code></pre>
+
+<p><strong>3. 配置映射</strong></p>
+<p>在<code>CartMapper.xml</code>中添加节点配置映射：</p>
+<pre><code>&lt;select id=&quot;findByCids&quot; resultType=&quot;xx.xx.xx.xx.CartVO&quot;&gt;
+    select 
+        cid,gid,title,image,price,t_cart.num 
+    from 
+        t_cart 
+    inner join 
+        t_goods 
+    on 
+        t_cart.gid=t_goods.id 
+    where 
+        cid in (
+        &lt;foreach collection=&quot;cids&quot;
+            item=&quot;cid&quot; separator=&quot;,&quot;&gt;
+            #{cid}
+        &lt;/foreach&gt;
+        )
+    order by 
+        t_cart.created_time desc
+&lt;/select&gt;
+</code></pre>
+
+<h3>显示确认订单页-业务层</h3>
+<p>与其它查询数据的业务层开发流程和套路都相同。</p>
+<h3>显示确认订单页-控制器层</h3>
+<p>此次“获取用户勾选的购物车数据列表”的URL应该是<code>http://localhost:8080/carts/get_by_cids?cids=3&amp;cids=4&amp;cids=5</code>。</p>
+<p>处理请求的方法：</p>
+<pre><code>@GetMapping(&quot;get_by_cids&quot;)
+public ResponseResult&lt;List&lt;CartVO&gt;&gt; getByCids(
+    Integer[] cids) {
+    // 直接调用业务层对象执行查询，并获取结果
+    // 返回成功与查询结果
+}
+</code></pre>
+
+<h3>显示确认订单页-控制器层</h3>
+<pre><code>    $(document).ready(function() {
+            showAddressList();
+            showCartList();
+        });
+        function showAddressList(){
+            $(&quot;#address-list&quot;).empty();
+            $.ajax({
+                &quot;url&quot; : &quot;/addresses/&quot;,
+                &quot;type&quot; : &quot;GET&quot;,
+                &quot;dataType&quot; : &quot;json&quot;,
+                &quot;success&quot; : function(json) {
+                    if (json.state == 200) {
+                        var list=json.data;
+                        for(var i=0;i&lt;list.length;i++){
+                            console.log(list[i].name);
+                            var html='&lt;option value=&quot;#{aid}&quot;&gt;#{tag} | #{name} | #{phone} | #{district}#{address}&lt;/option&gt;';
+                            html=html.replace(/#{aid}/g,list[i].aid);
+                            html=html.replace(/#{tag}/g,list[i].tag);
+                            html=html.replace(/#{name}/g,list[i].name);
+                            html=html.replace(/#{district}/g,list[i].district);
+                            html=html.replace(/#{address}/g,list[i].address);
+                            html=html.replace(/#{phone}/g,list[i].phone);
+
+                            $(&quot;#address-list&quot;).append(html);
+                        }
+                    } else {
+                        alert(json.message);
+                    }
+                },
+                &quot;error&quot;:function(){
+                    alert(&quot;您的登录信息已过期，请重新登录！&quot;);
+                    location.href=&quot;/web/login.html&quot;;
+                }
+            });
+        }
+
+        function showCartList(){
+            $(&quot;#cart-list&quot;).empty();
+            $.ajax({
+                &quot;url&quot; : &quot;/carts/get_by_cids&quot;+location.search,
+                &quot;type&quot; : &quot;GET&quot;,
+                &quot;dataType&quot; : &quot;json&quot;,
+                &quot;success&quot; : function(json) {
+                    if (json.state == 200) {
+                        var list=json.data;
+                        var allCount=0;
+                        var allPrice=0;
+                        for(var i=0;i&lt;list.length;i++){
+                            console.log(list[i].title);
+                            allCount+=list[i].num;
+                             allPrice+=list[i].num*list[i].price;
+                            var html='&lt;tr&gt;'
+                                +'&lt;td&gt;&lt;img src=&quot;..#{goods-image}collect.png&quot; class=&quot;img-responsive&quot; /&gt;&lt;/td&gt;'
+                                +'&lt;td&gt;#{goods-title}&lt;/td&gt;'
+                                +'&lt;td&gt;¥&lt;span&gt;#{goods-price}&lt;/span&gt;&lt;/td&gt;'
+                                +'&lt;td&gt;#{goods-num}&lt;/td&gt;'
+                                +'&lt;td&gt;&lt;span&gt;#{total-price}&lt;/span&gt;&lt;/td&gt;'
+                                +'&lt;/tr&gt;';
+
+                            html=html.replace(/#{cid}/g,list[i].cid);   
+                            html=html.replace(/#{goods-image}/g,list[i].image);
+                            html=html.replace(/#{goods-title}/g,list[i].title);
+                            html=html.replace(/#{goods-price}/g,list[i].price);
+                            html=html.replace(/#{goods-num}/g,list[i].num);
+                            html=html.replace(/#{total-price}/g,list[i].num*list[i].price);
+
+                            $(&quot;#cart-list&quot;).append(html);
+                        }
+                        $(&quot;#all-count&quot;).html(allCount);
+                        $(&quot;#all-price&quot;).html(allPrice);
+                    } else {
+                        alert(json.message);
+                    }
+                },
+                &quot;error&quot;:function(){
+                    alert(&quot;您的登录信息已过期，请重新登录！&quot;);
+                    location.href=&quot;/web/login.html&quot;;
+                }
+            });
+        }
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DAY06-上传头像</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>20. 用户-上传头像-持久层</h3>
+<p><strong>1. 规划SQL语句</strong></p>
+<p>首先，上传头像的功能其实共分为2个部分，一部分是接收上传的文件并存储到服务器的硬盘中，另一部分是将存储下来的文件的路径记录在数据库中！所以，在此前<code>t_user</code>表的设计中，关于头像的<code>avatar</code>字段是使用<code>varchar(50)</code>，就是用来记录每个用户的头像的路径值的，例如<code>upload/xxxx.jpg</code>。</p>
+<p>所以，对于持久层开发而言，上传头像需要做的事情的本质就是<strong>修改当前用户的avatar字段的值</strong>！则需要执行的SQL语句就是（与<strong>修改密码</strong>极为相似）：</p>
+<pre><code>UPDATE t_user SET avatar=?, modified_user=?, modified_time=? WHERE uid=?
+</code></pre>
+
+<p>另外，在业务中，也应该检查用户数据是否存在、是否标记为已删除，这些功能已经存在，无需再开发。</p>
+<p><strong>2. 接口与抽象方法</strong></p>
+<p>在<code>UserMapper.java</code>接口中添加抽象方法：</p>
+<pre><code>Integer updateAvatar(
+    @Param(&quot;uid&quot;) Integer uid, 
+    @Param(&quot;avatar&quot;) String avatar, 
+    @Param(&quot;modifiedUser&quot;) String modifiedUser, 
+    @Param(&quot;modifiedTime&quot;) Date modifiedTime);
+</code></pre>
+
+<p><strong>3. 配置XML映射</strong></p>
+<p>在<code>UserMapper.xml</code>中配置以上抽象方法对应的SQL映射：</p>
+<pre><code>&lt;!-- 更新用户的头像 --&gt;
+&lt;!-- Integer updateAvatar(
+        @Param(&quot;uid&quot;) Integer uid, 
+        @Param(&quot;avatar&quot;) String avatar, 
+        @Param(&quot;modifiedUser&quot;) String modifiedUser, 
+        @Param(&quot;modifiedTime&quot;) Date modifiedTime) --&gt;
+&lt;update id=&quot;updateAvatar&quot;&gt;
+    UPDATE
+        t_user
+    SET
+        avatar=#{avatar},
+        modified_user=#{modifiedUser},
+        modified_time=#{modifiedTime}
+    WHERE
+        uid=#{uid}
+&lt;/update&gt;
+</code></pre>
+
+<p>在<code>UserMapperTestCase</code>中编写并执行单元测试：</p>
+<pre><code>@Test
+public void updateAvatar() {
+    Integer uid = 14;
+    String avatar = &quot;这里应该是头像的路径&quot;;
+    String modifiedUser = &quot;超级管理员&quot;;
+    Date modifiedTime = new Date();
+    Integer rows = mapper.updateAvatar(uid, avatar, modifiedUser, modifiedTime);
+    System.err.println(&quot;rows=&quot; + rows);
+}
+</code></pre>
+
+<h3>21. 用户-上传头像-业务层</h3>
+<p><strong>1. 规划异常</strong></p>
+<p>无</p>
+<p><strong>2. 接口与抽象方法</strong></p>
+<p>在<code>IUserService</code>接口中添加“上传头像”的抽象方法：</p>
+<pre><code>void changeAvatar(Integer uid, String avatar, String username) throws UserNotFoundException, UpdateException;
+</code></pre>
+
+<p><strong>3. 实现抽象方法</strong></p>
+<p>在<code>UserServiceImpl</code>实现类中实现以上抽象方法：</p>
+<pre><code>@Override
+public void changeAvatar(Integer uid, String avatar, String username)
+        throws UserNotFoundException, UpdateException {
+    // 根据参数uid查询用户数据
+    User result = userMapper.findByUid(uid);
+
+    // 判断查询结果是否为null
+    if (result == null) {
+        // 是：抛出UserNotFoundException
+        throw new UserNotFoundException(
+            &quot;修改头像错误！尝试访问的用户数据不存在！&quot;);
+    }
+
+    // 判断查询结果中的isDelete是否为1
+    if (result.getIsDelete() == 1) {
+        // 是：抛出UserNotFoundException
+        throw new UserNotFoundException(
+            &quot;修改头像错误！尝试访问的用户数据不存在！&quot;);
+    }
+
+    // 创建当前时间对象
+    Date now = new Date();
+    // 调用持久层的方法执行更新头像，并获取返回值
+    Integer rows = userMapper.updateAvatar(uid, avatar, username, now);
+    // 判断返回值是否不为1，是，抛出异常
+    if (rows != 1) {
+        // 是：抛出UpdateException
+        throw new UpdateException(
+            &quot;修改头像错误！更新数据时发生未知错误！&quot;);
+    }
+}
+</code></pre>
+
+<p>完成后，在<code>UserServiceTestCase</code>中编写并执行单元测试：</p>
+<pre><code>@Test
+public void changeAvatar() {
+    try {
+        Integer uid = 14;
+        String username = &quot;Admin&quot;;
+        String avatar = &quot;新头像地址&quot;;
+        service.changeAvatar(uid, avatar, username);
+        System.err.println(&quot;OK.&quot;);
+    } catch (ServiceException e) {
+        System.err.println(e.getClass());
+        System.err.println(e.getMessage());
+    }
+}
+</code></pre>
+
+<h3>22. 用户-上传头像-控制器层</h3>
+<p><strong>1. 处理异常</strong></p>
+<p>暂无</p>
+<p><strong>2. 设计请求</strong></p>
+<pre><code>请求路径：/users/change_avatar
+请求参数：HttpServletRequest request, @RequestParam(&quot;avatar&quot;) MultipartFile avatar, HttpSession session
+请求类型：POST
+响应数据：ResponseResult&lt;String&gt;
+</code></pre>
+
+<p><strong>3. 处理请求</strong></p>
+<pre><code>/**
+ * 上传头像的文件夹名称
+ */
+public static final String UPLOAD_DIR=&quot;upload&quot;;
+public static final long UPLOAD_AVATAR_MAX_SIZE=1*1024*1024;
+
+public static final List&lt;String&gt; UPLOAD_AVATAR_TYPES=new ArrayList&lt;String&gt;();
+static {
+    UPLOAD_AVATAR_TYPES.add(&quot;image/jpg&quot;);
+    UPLOAD_AVATAR_TYPES.add(&quot;image/png&quot;);
+}
+
+@PostMapping(&quot;change_avatar&quot;)
+public ResponseResult&lt;String&gt;changeAvatar(
+        HttpServletRequest request,
+        @RequestParam(&quot;avatar&quot;) MultipartFile avatar,
+        HttpSession session) {
+    // TODO 判断isEmpty
+    if(avatar.isEmpty()) {
+        //抛异常
+        throw new FileEmptyException(&quot;上传头像失败！未选择文件或文件为空&quot;);
+    }
+    // TODO 判断文件大小
+    if(avatar.getSize()&gt;UPLOAD_AVATAR_MAX_SIZE) {
+        //抛异常
+        throw new FileSizeException(&quot;上传头像失败！不允许使用超过&quot;+UPLOAD_AVATAR_MAX_SIZE/1024+&quot;KB的文件！&quot;);
+    }
+    // TODO 判断文件类型
+    if(!UPLOAD_AVATAR_TYPES.contains(avatar.getContentType())) {
+        //不允许上传
+        throw new FileTypeException(&quot;上传头像失败！不支持文件类型&quot;);
+    }
+    // 确定保存文件的文件夹的File对象：参考上传的demo
+    String parentPath=request.getServletContext().getRealPath(UPLOAD_DIR);
+    File parent=new File(parentPath);
+    if (!parent.exists()) {
+        parent.mkdirs();
+    }
+    // 确定保存的文件的文件名：参考上传的demo
+    String originalFileName=avatar.getOriginalFilename();
+    String suffix=&quot;&quot;;
+    int benginIndex=originalFileName.lastIndexOf(&quot;.&quot;);
+    if(benginIndex!=1) {
+        suffix=originalFileName.substring(benginIndex);
+    }
+    String child=UUID.randomUUID().toString()+suffix;
+    // 创建保存文件的File对象：dest = new File(parent, child);
+    File dest=new File(parent,child);
+    // 执行上传并保存头像文件：
+    try {
+        avatar.transferTo(dest);
+    } catch (IllegalStateException e) {     
+        throw new FileStateException(&quot;上传头像失败！所选文件已经不可使用&quot;);
+    } catch (IOException e) {
+        throw new FileIOException(&quot;上传头像失败！读写数据错误&quot;);
+    }
+
+    // 从Session中获取uid和username
+    Integer uid=getUidFromSession(session);
+    // 从session中获取username
+    String username=session.getAttribute(&quot;username&quot;).toString();
+    String avatarPath=&quot;/&quot;+UPLOAD_DIR+&quot;/&quot;+child;
+    // 执行修改数据：service.changeAvatar(uid, avatarPath, username)
+    userService.changeAvatar(uid, avatarPath, username);
+    // 返回成功及avatarPath
+    ResponseResult&lt;String&gt;rr=new ResponseResult&lt;&gt;();
+    rr.setState(SUCCESS);
+    rr.setData(avatarPath);
+    return rr;
+}
+</code></pre>
+
+<h3>23. 用户-上传头像-前端页面</h3>
+<p>当完成控制器端的基本上传功能后，就可以直接开始编写前端页面，以尽早的测试较少的代码，验证功能是否正常，当功能已经正常后，再补全控制器中剩余的相关检查等代码。</p>
+<p>此次使用的前端页面是<code>upload.html</code>，该页面需要实现的功能与此前其它页面相同，也都是需要提交AJAX请求到服务器端的控制器，所以，可以从前序的其它页面中复制相关代码再进行调整。</p>
+<p>相对于普通的表单数据提交，此次涉及文件上传时，区别在于：</p>
+<ol>
+<li>
+<p>不再使用<code>表单对象.serialize()</code>，而是需要通过<code>new FormData(表单对象)</code>的方式获取需要提交的数据；</p>
+</li>
+<li>
+<p>调用<code>$.ajax()</code>函数时，需要多配置2个属性：<code>&quot;contentType&quot;:false</code>和<code>&quot;processData&quot;:false</code></p>
+</li>
+</ol>
+<p>具体的代码实现为：
+	加上<code>script type=&quot;text/javascript&quot; src=&quot;../bootstrap3/js/jquery.cookie.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script</code></p>
+<pre><code>$(document).ready(function(){
+        if($.cookie(&quot;avatar&quot;)!=null){
+            $(&quot;img-avatar&quot;).attr(&quot;src&quot;,$.cookie(&quot;avatar&quot;));
+        }       
+});
+$(&quot;#btn-change-avatar&quot;).click(function(){
+    $.ajax({
+        &quot;url&quot;:&quot;/users/change_avatar&quot;,
+        &quot;data&quot;:new FormData($(&quot;#form-change-avatar&quot;)[0]),
+        &quot;contentType&quot;:false,
+        &quot;processData&quot;:false,
+        &quot;type&quot;:&quot;post&quot;,
+        &quot;dataType&quot;:&quot;json&quot;,
+        &quot;success&quot;:function(json) {
+            if (json.state == 200) {
+                alert(&quot;上传头像成功！&quot;);
+                $(&quot;#img-avatar&quot;).attr(&quot;src&quot;,json.data);
+                $.cookie(&quot;avatar&quot;, json.data, {expire: 7});
+            } else {
+                alert(json.message);
+            }
+        },
+        &quot;error&quot;:function() {
+            alert(&quot;您的登录信息已过期，请重新登录！&quot;);
+            location.href=&quot;/web/login.html&quot;;
+        }
+    });
+});
+</code></pre>
+
+<p>剩下的，就是修改标签的id和表单控件的name值。</p>
+<p>完成后，可以测试功能，与传统的SpringMVC项目不同，由于SpringBoot内置Tomcat，如果上传成功，在Eclipse中是可以看到上传的文件的。</p>
+<p>接下来，应该在上传成功后显示所上传的头像图片，需要先为显示头像的<code>&lt;img&gt;</code>标签分配id值，然后，当上传成功后：</p>
+<pre><code>$(&quot;#img-avatar&quot;).attr(&quot;src&quot;, json.data);
+</code></pre>
+
+<p>目前，上传成功后，可以显示所上传的图片，但是，刷新或重新打开页面时，仍显示默认的头像图片，并不是所上传的图片！要解决这个问题：</p>
+<ol>
+<li>
+<p>当登录成功后，服务器端就将头像路径响应给客户端，并且，客户端应该将头像路径存储到Cookie中；</p>
+</li>
+<li>
+<p>当打开“修改头像”页面时，检查Cookie中是否存在头像路径，如果存在，则显示；</p>
+</li>
+<li>
+<p>当修改头像成功后，需要更新Cookie中存储的头像路径。</p>
+</li>
+</ol>
+<p>在代码中的表现为：</p>
+<ol>
+<li>
+<p>服务器端用于执行“登录”的查询中，是否查询了<code>avatar</code>字段，如果没有，需要补充查询该字段；</p>
+</li>
+<li>
+<p>在<code>login.html</code>中，客户端登录成功时，需要将头像保存到Cookie中：</p>
+<p>$.cookie(&quot;username&quot;, json.data.username, {expire: 7});
+$.cookie(&quot;avatar&quot;, json.data.avatar, {expire: 7});</p>
+</li>
+<li>
+<p>在<code>upload.html</code>中，页面加载完成时就检查头像，如果有，则显示：</p>
+<p>$(document).ready(function() {
+	if ($.cookie(&quot;avatar&quot;) != null) {
+		$(&quot;#img-avatar&quot;).attr(&quot;src&quot;, $.cookie(&quot;avatar&quot;));
+	}
+});</p>
+</li>
+<li>
+<p>在<code>upload.html</code>中，上传成功后需要更新Cookie中存储的头像路径：</p>
+<p>$.cookie(&quot;avatar&quot;, json.data, {expire: 7});</p>
+</li>
+</ol>
+<h3>附2：配置整个项目上传文件的最大大小</h3>
+<p>在主main配置</p>
+<pre><code>@SpringBootApplication
+@MapperScan(&quot;cn.tedu.store.mapper&quot;)
+@Configuration
+public class StoreApplication {
+public static void main(String[] args) {
+    SpringApplication.run(StoreApplication.class, args);
+}
+@Bean
+public MultipartConfigElement getMultipartConfig() {
+    MultipartConfigFactory factory=new MultipartConfigFactory();
+    DataSize maxSize=DataSize.ofMegabytes(100L);//整个项目允许上传的文件大小最大为100MB
+    factory.setMaxFileSize(maxSize);
+    factory.setMaxRequestSize(maxSize);
+    return factory.createMultipartConfig();
+}
+</code></pre>
+
+<p>}</p>
+<h3>附1：在HTML页面中使用Cookie</h3>
+<p>在jQuery中的<code>$.cookie()</code>函数是用于操作Cookie的函数。</p>
+<p>当需要向Cookie中存入数据时：</p>
+<pre><code>$.cookie(数据名, 数据值, {expire: 有效期为多少天});
+</code></pre>
+
+<p>同样是<code>$.cookie()</code>函数，当只有1个参数时，表示从Cookie中获取数据：</p>
+<pre><code>$.cookie(数据名);
+</code></pre>
+
+<p><strong>注意：使用以上函数需要引用jquery.cookie.js文件！</strong></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

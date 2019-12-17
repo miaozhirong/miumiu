@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>附录-上传文件</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>附：1. 基于SpringMVC的文件上传</h3>
+<h4>1.1. 创建项目</h4>
+<p>创建新的SpringMVC的项目，即：创建<strong>Maven Project</strong>，<strong>Group Id<strong>是<code>cn.tedu.spring</code>，</strong>Artifact Id</strong>是<code>SPRINGMVC-03-UPLOAD</code>，然后创建出项目。</p>
+<h4>1.2. 添加必要的依赖</h4>
+<p>本项目需要<code>spring-webmvc</code>依赖，另，上传功能需要<code>commons-fileupload</code>依赖：</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;commons-fileupload&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;
+    &lt;version&gt;1.4&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<h4>1.3. 设计页面</h4>
+<p>在<code>webapp</code>下创建<code>index.html</code>静态页面，并在页面中添加上传的表单，上传控件是：</p>
+<pre><code>&lt;input type=&quot;file&quot; /&gt;
+</code></pre>
+
+<blockquote>
+<p>以上标签还可以配置<code>multiple=&quot;multiple&quot;</code>，用于批量上传，用户在选择上传的文件时，可以按住Ctrl键一6次选中多个文件最终提交。</p>
+</blockquote>
+<p>实现文件上传时，<code>&lt;form&gt;</code>的<code>method</code>必须是<code>post</code>，并且，必须配置<code>enctype=&quot;multipart/form-data&quot;</code>。</p>
+<p>完整代码例如：</p>
+<pre><code>&lt;form action=&quot;&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+    &lt;p&gt;请选择您要上传的文件&lt;/p&gt;
+    &lt;p&gt;&lt;input type=&quot;file&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;input type=&quot;submit&quot; value=&quot;上传&quot; /&gt;&lt;p&gt;
+&lt;/form&gt;
+</code></pre>
+
+<h4>1.4. Spring配置</h4>
+<p>在实现上传之前，需要在Spring的配置文件添加配置：</p>
+<pre><code>&lt;bean id=&quot;multipartResolver&quot;
+    class=&quot;org.springframework.web.multipart.commons.CommonsMultipartResolver&quot; /&gt;
+</code></pre>
+
+<p>在配置时，<code>&lt;bean&gt;</code>节点的<code>id</code>属性必须是<code>multipartResolver</code>。</p>
+<p>该<code>&lt;bean&gt;</code>节点还可以用于为<code>CommonsMultipartResolver</code>的某些属性注入值，但是，不是必要的配置。</p>
+<h4>1.5. 实现文件上传</h4>
+<p>用户通过网页可以选择要上传的文件，并提交到服务器端，服务器端需要使用控制器接收用户此次的提交数据的请求，并将数据存储到某个文件中，以完成文件上传。</p>
+<p>首先，应该在服务器端创建控制器类<code>cn.tedu.spring.UploadController</code>（确保该类在组件扫描范围之内），添加<code>@Controller</code>注解，并添加处理请求的方法：</p>
+<pre><code>@RequestMapping(&quot;upload.do&quot;)
+public String handleUpload() {
+    return null;
+}
+</code></pre>
+
+<p>则前端页面的<code>&lt;form&gt;</code>的<code>action</code>属性值就必须是<code>upload.do</code>。</p>
+<p>在控制器中，使用<code>MultipartFile</code>类型的参数，它表示客户端提交的文件的数据：</p>
+<pre><code>@RequestMapping(&quot;upload.do&quot;)
+public String handleUpload(
+        MultipartFile file) {
+    return null;
+}
+</code></pre>
+
+<p>由于此处参数的名称是<code>file</code>，则前端页面的上传控件的<code>name</code>属性值也必须是<code>file</code>。</p>
+<p>除此以外，还要求在该参数之前使用<code>@RequestParam(&quot;file&quot;)</code>注解：</p>
+<pre><code>@RequestMapping(&quot;upload.do&quot;)
+public String handleUpload(
+    @RequestParam(&quot;file&quot;) MultipartFile file) {
+    return null;
+}
+</code></pre>
+
+<p>在处理请求的方法中，调用参数<code>MultipartFile file</code>的<code>transferTo(File dest)</code>方法即可将文件存储下来！</p>
+<pre><code>@RequestMapping(&quot;upload.do&quot;)
+public String handleUpload(
+    @RequestParam(&quot;file&quot;) MultipartFile file) throws IllegalStateException, IOException {
+    File dest = new File(&quot;d:/ChengHeng/1.jpg&quot;);
+    file.transferTo(dest);
+    return null;
+}
+</code></pre>
+
+<h4>1.6. 确定上传文件的文件名</h4>
+<pre><code>@RequestMapping(&quot;upload.do&quot;)
+public String handleUpload(
+    @RequestParam(&quot;file&quot;) MultipartFile file) throws IllegalStateException, IOException {
+    // 确定上传文件将保存到哪个文件夹
+    File parent = new File(&quot;d:/ChengHeng&quot;);
+
+    // 获取上传的文件的原始名称
+    String originalFilename = file.getOriginalFilename(); // DAY01.zip
+    // 确定上传的文件的扩展名
+    String suffix = &quot;&quot;;
+    int beginIndex = originalFilename.lastIndexOf(&quot;.&quot;);
+    if (beginIndex != -1) {
+        suffix = originalFilename.substring(beginIndex);
+    }
+    // 确定上传的文件最终保存时使用的文件名
+    String child = UUID.randomUUID().toString() + suffix;
+
+    // 确定上传的文件最终保存时的文件对象
+    File dest = new File(parent, child);
+    // 执行保存
+    file.transferTo(dest);
+    return null;
+}
+</code></pre>
+
+<h4>1.7. 确定上传到的文件夹</h4>
+<pre><code>@RequestMapping(&quot;upload.do&quot;)
+public String handleUpload(
+    HttpServletRequest request,
+    @RequestParam(&quot;file&quot;) MultipartFile file) throws IllegalStateException, IOException {
+    // 通过request对象获取项目部署到的文件夹中的某子级文件夹
+    String parentPath 
+        = request.getServletContext()
+            .getRealPath(&quot;upload&quot;);
+    // 确定上传文件将保存到哪个文件夹
+    File parent = new File(parentPath);
+    // 确保文件夹是存在的
+    if (!parent.exists()) {
+        parent.mkdirs();
+    }
+
+    // 获取上传的文件的原始名称
+    String originalFilename = file.getOriginalFilename(); // DAY01.zip
+    // 确定上传的文件的扩展名
+    String suffix = &quot;&quot;;
+    int beginIndex = originalFilename.lastIndexOf(&quot;.&quot;);
+    if (beginIndex != -1) {
+        suffix = originalFilename.substring(beginIndex);
+    }
+    // 确定上传的文件最终保存时使用的文件名
+    String child = UUID.randomUUID().toString() + suffix;
+
+    // 确定上传的文件最终保存时的文件对象
+    File dest = new File(parent, child);
+    // 执行保存
+    file.transferTo(dest);
+    return null;
+}
+</code></pre>
+
+<h4>1.8. 关于MutlipartFile中的常用方法</h4>
+<ul>
+<li>
+<p><code>boolean isEmpty()</code>：判断上传的文件是否为空，当没有选择文件，或选择的文件是0字节时为<code>true</code>，否则为<code>false</code>。</p>
+</li>
+<li>
+<p><code>String getOriginalFilename()</code>：获取文件的原始文件名，即在客户端中使用的文件名。</p>
+</li>
+<li>
+<p><code>long getSize()</code>：获取文件的大小，以字节为单位。</p>
+</li>
+<li>
+<p><code>String getContentType()</code>：获取文件的MIME类型，各扩展名与MIME类型的对应关系可以上网查阅，或在Tomcat的<code>conf/web.xml</code>中查找。</p>
+</li>
+<li>
+<p><code>InputStream getInputStream()</code>：获取上传文件的输入流，通常用于自定义接收和存储文件，与<code>transferTo()</code>不会同时使用。</p>
+</li>
+<li>
+<p><code>void transferTo(File dest)</code>：直接存储客户端提交上传的文件。</p>
+</li>
+</ul>
+<h4>1.9. 关于MultipartResolver的配置</h4>
+<p>在使用文件上传时，在Spring的配置文件中配置了<code>CommonsMultipartResolver</code>，可以配置的属性有：</p>
+<ul>
+<li>
+<p><code>maxUploadSize</code>：上传的文件的最大大小，以字节为单位，假设设置值是10M，如果一次性上传5个文件，则5个文件的大小总和不允许超过10M。</p>
+</li>
+<li>
+<p><code>maxUploadSizePerFile</code>：上传的单个文件的最大大小，以字节为单位，，假设设置值是10M，如果一次性上传5个文件，则每个文件的大小都不允许超过10M，但是5个文件的总和可能接近50M。</p>
+</li>
+<li>
+<p><code>defaultEncoding</code>：默认编码，用于配置客户端在上传表单中提交的其它值（例如同一个表单中的输入框中的数据等）的字符编码。</p>
+</li>
+</ul>
+<blockquote>
+<p>即便配置了<code>MultipartResolver</code>的<code>maxUploadSize</code>甚至还有<code>maxUploadSizePerFile</code>，在编写控制器中处理上传的方法时，仍应该通过<code>MultipartFile</code>的<code>getSize()</code>方法获取文件大小，并判断文件大小是否在允许的范围之内！因为，配置的<code>MultipartResolver</code>是整个上传功能的配置，在同一个项目中，可能有多个上传功能，例如上传头像、上传附件、上传商品图片等，<code>MultipartResolver</code>的配置将作用于当前项目中的所有上传功能，所以，设置值可能偏大，而在控制器中是针对某个具体的功能的配置！所以，其实可以不配置<code>MultipartResolver</code>，只需要在每个处理上传功能的控制器方法中进行判断即可！当然，如果在配置文件中已经配置了<code>MultipartResolver</code>，则可能更早的将某些不符合要求的请求拒绝掉，也是有好处的，但是，如果要配置，一定是配置一个满足所有上传功能的最大值。</p>
+</blockquote>
+<h3>附2：配置整个项目上传文件的最大大小</h3>
+<p>在主main配置</p>
+<pre><code>@SpringBootApplication
+@MapperScan(&quot;cn.tedu.store.mapper&quot;)
+@Configuration
+public class StoreApplication {
+public static void main(String[] args) {
+    SpringApplication.run(StoreApplication.class, args);
+}
+@Bean
+public MultipartConfigElement getMultipartConfig() {
+    MultipartConfigFactory factory=new MultipartConfigFactory();
+    DataSize maxSize=DataSize.ofMegabytes(100L);//整个项目允许上传的文件大小最大为100MB
+    factory.setMaxFileSize(maxSize);
+    factory.setMaxRequestSize(maxSize);
+    return factory.createMultipartConfig();
+}
+</code></pre>
+
+<p>}</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

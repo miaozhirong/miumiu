@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DAY08-省市区显示列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>31. 省市区-显示列表-导入district数据表</h3>
+<p><code>source d:/t_dict_district.sql;</code></p>
+<h3>32. 省市区-显示列表-创建实体类</h3>
+<p>创建<code>cn.tedu.store.entity.District</code>实体类：</p>
+<pre><code>private Integer id;
+private String parent;
+private String code;
+private String name;
+</code></pre>
+
+<h3>33. 省市区-显示列表-持久层</h3>
+<p><strong>1. 规划SQL语句</strong>
+根据父级代号获取省市区列表</p>
+<pre><code>SELECT id,parent,code,name FROM t_dict_district WHERE parent=? ORDER BY code ASC
+</code></pre>
+
+<p>根据父级代号获取省市区详情</p>
+<pre><code>SELECT name FROM t_dict_district WHERE code=#{code}
+</code></pre>
+
+<p><strong>2. 接口与抽象方法</strong>
+创建<code>cn.tedu.store.mapper.DistrictMapper</code>持久层接口，并添加以上2个功能对应的抽象方法：</p>
+<pre><code>//根据父级代号获取省市区列表
+List&lt;District&gt; findByParent(String parent);
+//根据父级代号获取省市区详情 
+District findByCode(String code);
+</code></pre>
+
+<p><strong>3. 配置XML映射</strong>
+复制得到<code>DistrictMapper.xml</code>文件，删除原文件中各子级节点的配置，修改根节点的namespace属性的值，然后，添加2个子节点以配置以上2个抽象方法的映射：</p>
+<p>然后，在src/test/java下创建<code>cn.tedu.store.mapper.DistrictMapperTestCase</code>测试类，在类之前添加2个注解，然后编写2个测试方法，以测试持久层的2个功能：</p>
+<h3>33. 省市区-显示列表-业务层</h3>
+<ol>
+<li>规划异常</li>
+</ol>
+<p>无</p>
+<ol>
+<li>
+<p>接口与抽象方法
+创建接口<code>cn.tedu.store.service.IDistrictService</code>,
+添加抽象方法</p>
+<p>List<District> getByParent(String parent);</p>
+<p>District getByCode(String code);</p>
+</li>
+<li>
+<p>实现抽象方法</p>
+<p>public List<District> getByParent(String parent) {}</p>
+<p>public District getByCode(String code) {}</p>
+</li>
+</ol>
+<h3>33. 省市区-显示列表-控制层</h3>
+<pre><code>@RestController
+@RequestMapping(&quot;/districts&quot;)
+public class DistrictController extends BaseController{
+    @Autowired
+    private IDistrictService districtService;
+    @GetMapping(&quot;/&quot;)
+    public ResponseResult&lt;List&lt;District&gt;&gt;getByParent(@RequestParam(&quot;parent&quot;) String parent){
+        List&lt;District&gt;data=districtService.getByParent(parent);
+        return new ResponseResult&lt;&gt;(SUCCESS,data);
+    }
+}
+</code></pre>
+
+<p><strong>实现显示全国所有省的下拉列表</strong></p>
+<p>1.当页面加载时，就应该向服务器端发出请求，获取全国所有省的数据，即<code>$(document).ready()</code>函数触发时，执行<code>$.ajax()</code>;</p>
+<p>2.获取回来的数据需要填充到下拉列表中，下拉列表的HTML代码结构大致是：</p>
+<pre><code>&lt;select id=&quot;&quot; name=&quot;xx&quot;&gt;
+    &lt;option value=&quot;值1&quot;&gt;第1个选项&lt;/option&gt;
+    &lt;option value=&quot;值2&quot;&gt;第2个选项&lt;/option&gt;
+    &lt;option value=&quot;值3&quot;&gt;第3个选项&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+
+<p>则需要将获取回来的数据进行遍历，形成若干个<code>&lt;option..</code>选项，通过<code>$(&quot;#menu&quot;).append(html)</code>可以将选项的HTML代码填充到某个标签中。</p>
+<pre><code>$(document).ready(function() {
+        showProvinceList();
+        $(&quot;#province&quot;).change(function(){
+            $(&quot;#city&quot;).empty();
+            $(&quot;#area&quot;).empty();
+            $(&quot;#area&quot;).append(&quot;&lt;option value=0&gt;------请选择------&lt;/option&gt;&quot;);
+            showCityList();
+        });
+        $(&quot;#city&quot;).change(function(){
+            $(&quot;#area&quot;).empty();
+            showAreaList();
+
+        });
+        $(&quot;#city&quot;).append(&quot;&lt;option value=0&gt;------请选择------&lt;/option&gt;&quot;);
+        $(&quot;#area&quot;).append(&quot;&lt;option value=0&gt;------请选择------&lt;/option&gt;&quot;);
+    });
+    function showProvinceList(){
+        $(&quot;#province&quot;).append(&quot;&lt;option value=0&gt;------请选择------&lt;/option&gt;&quot;);
+        $.ajax({
+            &quot;url&quot; : &quot;/districts/&quot;,
+            &quot;data&quot; : &quot;parent=86&quot;,
+            &quot;type&quot; : &quot;GET&quot;,
+            &quot;dataType&quot; : &quot;json&quot;,
+            &quot;success&quot; : function(json) {
+                if (json.state == 200) {
+                    var list=json.data;
+                    for(var i=0;i&lt;list.length;i++){
+                        console.log(list[i].name);
+                        var op='&lt;option value=&quot;'+list[i].code+'&quot;&gt;'+list[i].name+'&lt;/option&gt;';
+                        $(&quot;#province&quot;).append(op);
+                    }
+                } else {
+                    alert(json.message);
+                }
+            },
+            &quot;error&quot;:function(){
+                alert(&quot;您的登录信息已过期，请重新登录！&quot;);
+                location.href=&quot;/web/login.html&quot;;
+            }
+        });
+    }
+    function showCityList(){
+        var provinceCode=$(&quot;#province&quot;).val();
+        $(&quot;#city&quot;).append(&quot;&lt;option value=0&gt;------请选择------&lt;/option&gt;&quot;);
+        if(provinceCode==0){
+            return;
+        }
+        $.ajax({
+            &quot;url&quot; : &quot;/districts/&quot;,
+            &quot;data&quot; : &quot;parent=&quot;+provinceCode,
+            &quot;type&quot; : &quot;GET&quot;,
+            &quot;dataType&quot; : &quot;json&quot;,
+            &quot;success&quot; : function(json) {
+                if (json.state == 200) {
+                    var list=json.data;
+                    for(var i=0;i&lt;list.length;i++){
+                        console.log(list[i].name);
+                        var op='&lt;option value=&quot;'+list[i].code+'&quot;&gt;'+list[i].name+'&lt;/option&gt;';
+                        $(&quot;#city&quot;).append(op);
+                    }
+                } else {
+                    alert(json.message);
+                }
+            },
+            &quot;error&quot;:function(){
+                alert(&quot;您的登录信息已过期，请重新登录！&quot;);
+                location.href=&quot;/web/login.html&quot;;
+            }
+        });
+    }
+    function showAreaList(){
+        var cityCode=$(&quot;#city&quot;).val();
+        $(&quot;#area&quot;).append(&quot;&lt;option value=0&gt;------请选择------&lt;/option&gt;&quot;);
+        if(cityCode==0){
+            return;
+        }
+        $.ajax({
+            &quot;url&quot; : &quot;/districts/&quot;,
+            &quot;data&quot; : &quot;parent=&quot;+cityCode,
+            &quot;type&quot; : &quot;GET&quot;,
+            &quot;dataType&quot; : &quot;json&quot;,
+            &quot;success&quot; : function(json) {
+                if (json.state == 200) {
+                    var list=json.data;
+                    for(var i=0;i&lt;list.length;i++){
+                        console.log(list[i].name);
+                        var op='&lt;option value=&quot;'+list[i].code+'&quot;&gt;'+list[i].name+'&lt;/option&gt;';
+                        $(&quot;#area&quot;).append(op);
+                    }
+                } else {
+                    alert(json.message);
+                }
+            },
+            &quot;error&quot;:function(){
+                alert(&quot;您的登录信息已过期，请重新登录！&quot;);
+                location.href=&quot;/web/login.html&quot;;
+            }
+        });
+    }
+</code></pre>
+
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
